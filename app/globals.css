@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --bg: #090d1f;
+  --surface: #111733;
+  --surface-2: #1a2147;
+  --line: #262e57;
+  --text: #eef0fb;
+  --muted: #9aa3c8;
+  --brand: #7c5cff;
+  --brand-2: #d946ef;
+  --good: #34d399;
+  --warn: #fbbf24;
+  --bad: #f87171;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f4f5fb;
+  --surface: #ffffff;
+  --surface-2: #eceffa;
+  --line: #d9ddf1;
+  --text: #14172b;
+  --muted: #565f86;
+  --brand: #6a47f5;
+  --brand-2: #c026d3;
+  --good: #059669;
+  --warn: #b45309;
+  --bad: #dc2626;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-fg: var(--text);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-2: var(--brand-2);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html { background: var(--bg); }
+body { background: var(--bg); color: var(--text); font-family: var(--font-sans); overflow-x: hidden; }
+
+.bg-brand-gradient { background-image: linear-gradient(135deg, var(--brand-2), var(--brand) 60%, #4f7cff); }
+.text-brand-gradient {
+  background-image: linear-gradient(135deg, #f472b6, #a78bfa 55%, #60a5fa);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.bg-hero-glow {
+  background:
+    radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--brand) 28%, transparent), transparent 70%),
+    radial-gradient(40% 40% at 90% 20%, color-mix(in srgb, var(--brand-2) 18%, transparent), transparent 70%);
+}
+
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+@keyframes vc-reel {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+@keyframes vc-confetti {
+  0% { transform: translateY(0) rotate(0); opacity: 1; }
+  100% { transform: translateY(70px) rotate(300deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+dialog::backdrop { background: rgb(5 8 20 / 0.7); backdrop-filter: blur(4px); }
